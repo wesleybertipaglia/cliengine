@@ -1,6 +1,7 @@
 from cliengine import registry
 
 def run_cli(app_name: str, description: str, types: list, space_length: int = 100):
+    """Run the command-line interface for the application."""
     print(f" {app_name} ".center(space_length, "-"))
     print(description)
     print("-" * space_length)
@@ -14,11 +15,15 @@ def run_cli(app_name: str, description: str, types: list, space_length: int = 10
         commands = registry.get_commands_by_type(tool_type)
         command = choose_tool(commands)
         if command:
-            command.run()
+            try:
+                command.run()
+            except Exception as e:
+                print(f"\n❌ Error running tool: {e}")
         else:
             print("\n❌ Invalid or cancelled tool.")
 
 def choose_tool_type(types):
+    """Prompt the user to choose a tool type."""
     print("\nChoose the type:")
     for i, t in enumerate(types, 1):
         print(f"{i} - {t.name.title()}")
@@ -36,6 +41,7 @@ def choose_tool_type(types):
         return None
 
 def choose_tool(commands):
+    """Prompt the user to choose a tool."""
     if not commands:
         print("\n❌ No tools registered for this type.")
         return None

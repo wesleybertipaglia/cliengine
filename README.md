@@ -38,6 +38,8 @@ This allows you to make changes to the engine while immediately reflecting them 
 
 ## Usage
 
+> A simple example usage was provided in the `example/` directory.
+
 ### 1. Define your custom command types
 
 Create a file (e.g., `command_types.py`) in your project root to declare your command types:
@@ -58,8 +60,8 @@ You can define as many types as needed, using `auto()` for automatic enumeration
 Create your commands in the `tools/` folder (or wherever you prefer), importing your own `CommandType` enum:
 
 ```python
-from cli_engine.command import Command
-from command_types import CommandType
+from cliengine.command import Command
+from command_type import CommandType
 
 class FileCompressorCommand(Command):
     def name(self):
@@ -77,9 +79,9 @@ class FileCompressorCommand(Command):
 In your `main.py`, load commands and pass your `CommandType` list to the runner:
 
 ```python
-from cli_engine.loader import load_commands_from
-from cli_engine.runner import run_cli
-from command_types import CommandType
+from cliengine.loader import load_commands_from
+from cliengine.runner import run_cli
+from command_type import CommandType
 
 load_commands_from("tools")
 
