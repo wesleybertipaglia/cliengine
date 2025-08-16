@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cliengine"
+version = "0.1.0"
+description = "A reusable engine for CLI tool development"
+authors = [
+    { name="wesleybertipaglia", email="wesleybertipaglia@gmail.com" }
+]
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = []
+
+[tool.setuptools.packages.find]
+where = ["."]
